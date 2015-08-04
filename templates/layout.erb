@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <title>Group Accounting Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js" type="application/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-extensions.css">
+    <link rel="stylesheet" href="../css/layout.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
+
+    <script src="coffee/main.js" type="application/javascript"></script>
+  </head>
+  <body>
+    <%= erb :header %>
+
+    <main id="body_content">
+      <%= yield %>
+    </main>
+
+    <%= erb :footer %>
+
+  </body>
+</html>
