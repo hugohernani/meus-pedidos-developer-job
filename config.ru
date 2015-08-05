@@ -20,7 +20,6 @@ end
 # end
 # DataMapper.finalize
 
-
 map('/') { run AppController}
 map('/contact') {run ContactController}
 

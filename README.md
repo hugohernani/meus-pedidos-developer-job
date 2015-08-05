@@ -1,7 +1,14 @@
-# Developer Job
+# Job Developer | Vaga para desenvolder
+Developer test. Not for commercial use
 
-Candidates to MeusPedidos company should use
-this application to let the company know about their skills.
+## Instructions | Instruções
+App: https://meus-pedidos-dev-job.herokuapp.com/contact
+### English description
 
-## Developer test. Not for commercial use
-### Using Ruby / Sinatra
+Application is avaliable at [herokuapp.com](https://meus-pedidos-dev-job.herokuapp.com/contact).
+Path: ***/contact***.
+
+### Descrição em português
+
+Application está disponível em [herokuapp.com](https://meus-pedidos-dev-job.herokuapp.com/contact).
+Caminho: ***/contact***.

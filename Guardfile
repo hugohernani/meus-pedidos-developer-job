@@ -28,6 +28,6 @@ guard :rspec, cmd: "bundle exec rspec" do
   # RSpec files
    watch(/^controllers\/(.+)\.rb$/)         { |m| "spec/#{m[1].split("_")[0]}_spec.rb" }
    watch(/^spec\/(.+)\.rb$/)         { |m| "spec/#{m[1].split("_")[0]}_spec.rb" }
-   watch(/^helpers\/(.+)\.rb$/)         { |m| "spec/#{m[1].split("_")[0]}_spec.rb" }
+   watch(/^helpers\/(.+)\.rb$/)         { |m| "spec/helpers/#{m[1].split("_")[0]}_spec.rb" }
 
 end
