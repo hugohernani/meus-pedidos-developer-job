@@ -12,6 +12,5 @@
 .DS_Store
 .LSOverride
 
-Gemfile.lock
 
 yaml_config.yml
