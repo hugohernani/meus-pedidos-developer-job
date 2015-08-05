@@ -1,2 +1,2 @@
-web: bundle exec rackup config.ru -p 5000
+web: bundle exec rackup config.ru -p $PORT
 guard: bundle exec guard -i
