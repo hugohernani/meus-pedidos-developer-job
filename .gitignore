@@ -12,5 +12,5 @@
 .DS_Store
 .LSOverride
 
-
+/models/*
 yaml_config.yml
