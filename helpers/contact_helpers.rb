@@ -16,8 +16,8 @@ module Contact
     # Prepare the body message according to the category: Front-End, Back-End, Mobile, Genérico
     def prepare_body(category)
       filtered_category = category == "Genérico" ? "" : category + " "
-      """Obrigado por se candidatar, assim que tivermos uma vaga disponível
-      para programador #{filtered_category}entraremos em contato."""
+      "Obrigado por se candidatar, assim que tivermos uma vaga disponível"\
+      " para programador #{filtered_category}entraremos em contato."
     end
 
     # Capture params and create mails to be sent according to the values filled by the user.
@@ -61,11 +61,10 @@ module Contact
           :body => mail[:body]
         )
       rescue => err
-        puts "Error on send_message: " + err.to_s
-        # TODO Catch it and deal with it
-        return false
+        # TODO Catch it and deal with it. Fix it.
+        return "error"
       end
-      return true
+      return "message_sent"
     end
 
     # Prepare default options for Pony and analyse if each prepared mail was sent
@@ -86,7 +85,7 @@ module Contact
       }
       mails = analyse_candidate!(params)
       result = mails.all? do |mail| # It should return if all messages was sent (true) or not (false)
-        send_message(mail) == true
+        send_message(mail) == "message_sent"
       end
       return result
     end
