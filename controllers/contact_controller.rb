@@ -38,12 +38,10 @@ class ContactController < MainController
   end
 
   configure :production do
-    yaml_config_file = File.join(File.dirname(__FILE__), '../yaml_config.yml')
-    environment = YAML.load_file(yaml_config_file)["production"]
-    set :email_address => environment["SENDGRID"]["EMAIL_ADDRESS"],
-    :email_user_name => environment["SENDGRID"]["USERNAME"], # or ENV[SENDGRID_USERNAME]
-    :email_password => environment["SENDGRID"]["PASSWORD"], # or ENV[SENDGRID_PASSWORD]
-    :email_domain => environment["SENDGRID"]["DOMAIN"]
+    set :email_address => "smtp.sendgrid.net",
+    :email_user_name => ENV[SENDGRID_USERNAME]
+    :email_password => ENV[SENDGRID_PASSWORD]
+    :email_domain => "heroku.com"
   end
 
 end
