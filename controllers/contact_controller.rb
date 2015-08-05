@@ -39,8 +39,8 @@ class ContactController < MainController
 
   configure :production do
     set :email_address => "smtp.sendgrid.net",
-    :email_user_name => ENV[SENDGRID_USERNAME],
-    :email_password => ENV[SENDGRID_PASSWORD],
+    :email_user_name => ENV["SENDGRID_USERNAME"],
+    :email_password => ENV["SENDGRID_PASSWORD"],
     :email_domain => "heroku.com"
   end
 
