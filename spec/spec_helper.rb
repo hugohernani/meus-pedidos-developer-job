@@ -19,12 +19,8 @@ configure :test do config
   set :run, false
   set :raise_errors, true
   set :logging, false
-  config.before(:each) { DataMapper.auto_migrate! }
+  config.before(:each) {
+    DataMapper.auto_migrate!
+    Pony.stub!(:deliver)
+  }
 end
-
-
-# For testing models
-# reset the database before each test to make sure our tests don't influence one another
-# Rspec.configure do |config|
-#   config.before(:each) { DataMapper.auto_migrate! }
-# end

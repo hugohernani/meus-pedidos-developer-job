@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby '2.1.5'
 
 gem 'sinatra'
+gem "sinatra-flash"
+gem "pony"
 gem "i18n"
 gem "json"
 gem 'data_mapper'

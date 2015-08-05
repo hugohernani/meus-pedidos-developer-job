@@ -9,14 +9,22 @@ Dir.glob('./{models,helpers,controllers}/*.rb').each do |file|
   require file
 end
 
+configure :development, :test do
+  # A Sqlite3 connection to a persistent database
+  DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/#{ENV['RACK_ENV']}.db")
+
+end
+
+configure :production do
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+
+
 DataMapper.finalize
 
-ENV['RACK_ENV'] ||= 'development'
-# A Sqlite3 connection to a persistent database
-DataMapper.setup(:default, ENV['DATABASE_URL'] ||
-                           "sqlite:///#{Dir.pwd}/db/#{ENV['RACK_ENV']}.db")
 
 map('/') { run AppController}
+map('/contact') {run ContactController}
 
 # Only for AutoMigration TEST.
 # TODO Remove it on last iteration of deployment phase

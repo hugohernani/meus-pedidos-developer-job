@@ -1,5 +1,6 @@
 module Main
   module Helpers
+
     def message(text)
       return erb :message, locals => {message: text}
     end
