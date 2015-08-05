@@ -1,5 +1,4 @@
 require 'sinatra/flash'
-require 'tilt/erubis'
 
 require_relative 'main_controller'
 require_relative '../helpers/contact_helpers'
