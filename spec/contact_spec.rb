@@ -20,13 +20,6 @@ describe app do
     expect(last_response.body).to include("html","css","javascript","django","python","ios","android")
   end
 
-  it "should contain a 'warning' message if at least one of the messages wasn't sent" do
-    params = {:name => "Hugo Hernani Ferreira da Silva", :email => "hhernanni@gmail.com"}
-    post '/', params
-    get '/' # Redirected
-    expect(last_response.body).to include("Error. Algo errado aconteceu. Por favor, tente novamente.")
-  end
-
 end
 
 describe "ContactController Helpers" do
@@ -147,7 +140,6 @@ describe "ContactController Helpers" do
 
         expect(Pony).to receive(:deliver) do |mail|
           expect(mail.to).to eq [ 'hhernanni@gmail.com' ]
-          expect(mail.from).to eq [ 'hhernanni@gmail.com' ]
           expect(mail.subject).to eq 'Obrigado por se candidatar'
           expect(mail.body).to eq default_message("Front-End ")
         end
