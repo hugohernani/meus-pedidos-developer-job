@@ -1,4 +1,5 @@
-require File.join(File.dirname(__FILE__), '/spec_helper')
+# require File.join(File.dirname(__FILE__), '/spec_helper')
+require_relative 'spec_helper'
 
 set :environment, :test
 
@@ -14,6 +15,12 @@ describe app do
     get '/'
     expect(last_response).to be_ok
   end
+
+  # it "should receive index template on /" do
+  #   get '/'
+  #   expect(last_response.body).to include("Nothing on INDEX yet")
+  # end
+
 end
 
 # Using ruby Pony gem
@@ -26,10 +33,10 @@ describe "Form" do
 
   it "sends mail" do
     expect(Pony).to receive(:deliver) do |mail|
-    expect(mail.to).to eq [ 'paulo@example.com' ]
-    expect(mail.from).to eq [ 'hugo@example.com' ]
-    expect(mail.subject).to eq 'Meus Pedidos - avaliação'
-    expect(mail.body).to eq 'Olá.'
+      expect(mail.to).to eq [ 'paulo@example.com' ]
+      expect(mail.from).to eq [ 'hugo@example.com' ]
+      expect(mail.subject).to eq 'Meus Pedidos - avaliação'
+      expect(mail.body).to eq 'Olá.'
     end
     Pony.mail(:to => 'paulo@example.com', :from => 'hugo@example.com',
               :subject => 'Meus Pedidos - avaliação', :body => 'Olá.')

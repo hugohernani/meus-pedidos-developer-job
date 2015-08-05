@@ -6,10 +6,10 @@ module Contact
     # Analyse if all the requirements for a specific category are greater than the minimum_level_required
     # Ex. If the category were Front-End, it would probably come values (between 0 and 10)
     # for the following fields: html, css, javascript
-    def analyse_requirements(*knowledgments)
+    def analyse_requirements(*knowledgments) # each knowledgments comes as str
       minimum_level_required = 7
       knowledgments.all? do |item|
-        item >= minimum_level_required
+        item.to_i >= minimum_level_required
       end
     end
 
@@ -24,10 +24,10 @@ module Contact
     def analyse_candidate!(params)
       mails = []
       categories = []
-      categories.push("Front-End") if analyse_requirements(params[:html].to_i, params[:css].to_i,
-                                      params[:javascript].to_i)
-      categories.push("Back-End") if analyse_requirements(params[:python].to_i, params[:django].to_i)
-      categories.push("Mobile") if analyse_requirements(params[:ios].to_i, params[:android].to_i)
+      categories.push("Front-End") if analyse_requirements(params[:html], params[:css],
+                                      params[:javascript])
+      categories.push("Back-End") if analyse_requirements(params[:python], params[:django])
+      categories.push("Mobile") if analyse_requirements(params[:ios], params[:android])
 
       unless categories.empty?
         categories.each do |cat|
@@ -77,7 +77,7 @@ module Contact
         :via_options => {
           :address              => settings.email_address,
           :port                 => '587',
-          :enable_starttls_auto => false,
+          :enable_starttls_auto => true,
           :user_name            => settings.email_user_name,
           :password             => settings.email_password,
           :authentication       => :plain,

@@ -1,5 +1,7 @@
-require_relative 'main_controller'
 require 'sinatra/flash'
+require 'tilt/erubis'
+
+require_relative 'main_controller'
 require_relative '../helpers/contact_helpers'
 
 class ContactController < MainController
@@ -13,12 +15,13 @@ class ContactController < MainController
 
   post_contact = lambda do
     success = send_messages
-    # flash[:notice] = "Obrigado."
+    success ? flash[:error] = false : flash[:error] = true
     if success
-      redirect ('/')
+      flash[:notice] = "Obrigado. Você deve ter recebido um email conforme sua categoria."
     else
-      redirect to ('/')
+      flash[:notice] = "Error. Algo errado aconteceu. Por favor, tente novamente."
     end
+    redirect to('/')
   end
 
   get '/', &get_contact
@@ -27,10 +30,12 @@ class ContactController < MainController
 
   # Some IN_APP configuration
   configure :test, :development do
-    set :email_address => 'smtp.gmail.com',
-    :email_user_name => ENV['GMAIL_USERNAME'],
-    :email_password => ENV['GMAIL_PASSWORD'],
-    :email_domain => 'localhost.localdomain'
+    yaml_config_file = File.join(File.dirname(__FILE__), '../yaml_config.yml')
+    environment = YAML.load_file(yaml_config_file)["development"]
+    set :email_address => environment["GMAIL"]["EMAIL_ADDRESS"],
+    :email_user_name => environment["GMAIL"]["USERNAME"],
+    :email_password => environment["GMAIL"]["PASSWORD"],
+    :email_domain => environment["GMAIL"]["DOMAIN"]
   end
 
   configure :production do

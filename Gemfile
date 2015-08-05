@@ -6,6 +6,8 @@ gem "sinatra-flash"
 gem "pony"
 gem "i18n"
 gem "json"
+gem 'rack-coffee'
+gem 'sass'
 gem 'data_mapper'
 
 group :development, :test do

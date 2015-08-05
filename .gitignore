@@ -13,3 +13,5 @@
 .LSOverride
 
 Gemfile.lock
+
+yaml_config.yml
