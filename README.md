@@ -1,4 +1,4 @@
-# Job Developer | Vaga para desenvolder
+# Job Developer | Vaga para desenvolvedor
 Developer test. Not for commercial use
 
 ## Instructions | Instruções
